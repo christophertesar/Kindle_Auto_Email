@@ -26,32 +26,40 @@ ezgmail.init()
 
 root = Tk()
 
-frame = Frame(root, width = 1000, height = 600)
-frame.pack()
+canvas = Canvas(root, height=400, width=600)
+canvas.pack()
+
+background_image = PhotoImage(file='background_app.png')
+background_label = Label(root, image=background_image)
+background_label.place(relwidth = 1, relheight = 1)
+
+#frames
+
+frame = Frame(root, bg= '#80c1ff', bd = 5)
+frame.place(relx = 0.5 , rely = 0.1 , relwidth=0.75, relheight = 0.1, anchor='n')
+
+frame_listbox = Frame(root, bg= '#80c1ff', bd = 5)
+frame_listbox.place(relx = 0.3 , rely = 0.3 , relwidth=0.4, relheight = 0.6, anchor ='n')
 
 #buttons
 button_enter = Button(frame, text="Enter", command = get_email)
-button_enter.grid(row = 2, column = 1)
+button_enter.place(relx = 0.85, rely = 0, relheight = 1, relwidth = 0.15)
 
 #entries
 email_entry = Entry(frame)
-email_entry.grid(row = 0, column = 1 ,columnspan = 3)
+email_entry.place(relx = 0.325, rely = 0, relheight = 1 , relwidth = 0.5)
 
 #labels
 email_entry_label = Label(frame, text = "Enter E-mail address")
-email_entry_label.grid(row = 0, column = 0)
+email_entry_label.place(relx = 0, rely = 0, relheight = 1, relwidth = 0.3)
 
-email_listbox_label = Label(frame, text = "E-mail List")
-email_listbox_label.grid(row = 3, column = 0)
+email_listbox_label = Label(frame_listbox, text = "E-mail List")
+email_listbox_label.place(relx = 0.25, rely = 0, relheight = 0.1, relwidth = 0.5)
 
 #listbox
-email_listbox = Listbox(frame)
-email_listbox.grid(row = 4, rowspan = 2, column = 0)
+email_listbox = Listbox(frame_listbox)
+email_listbox.place(relx = 0, rely = 0.15, relheight = 0.85, relwidth = 1)
 
-
-#packing
-#button_enter.pack(side = BOTTOM)
-#email_entry.pack(side = TOP)
 
 root.mainloop()
 
